@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+def calculate_storage(filesize):
+    block_size = 4096
+    #use floor division to calculate how many blocks are fully occupied
+    full_blocks = filesize//block_size
+    #use modulo operator to check wheteher there's any remainder
+    partial_block_remainder = filesize%block_size
+    #Depending on whether there's a reminder or not, return
+    #the total number of bytes required or not, return
+    #to store your data
+    if partial_block_remainder > 0:
+        return block_size*(full_blocks+1)
+    return block_size*full_blocks
+
+print(calculate_storage(1))
+print(calculate_storage(4096))
+print(calculate_storage(4097))
+print(calculate_storage(6000))
